@@ -24,6 +24,6 @@ with below JSON as the request body.
 ```
 and also include the below 2 request headers.
 
-Content-Type : application/json
-aeg-event-type : Notification
+1. Content-Type : application/json
+2. aeg-event-type : Notification
 
