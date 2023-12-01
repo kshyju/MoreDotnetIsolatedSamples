@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "MyCompany.MyApp.Functions": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7086",
+      "launchBrowser": false
+    }
+  }
+}
