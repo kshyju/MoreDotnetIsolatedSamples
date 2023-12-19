@@ -2,12 +2,14 @@
 using Microsoft.Azure.Functions.Worker;
 using System.Net;
 using Microsoft.Extensions.Logging;
+using Microsoft.Azure.Functions.Worker.Http;
 
 namespace CustomAuthUsingMiddleware.Middlewares
 {
     public sealed class MyCustomAuthMiddleware : IFunctionsWorkerMiddleware
     {
-        private ILogger<MyCustomAuthMiddleware> _logger;
+        private const string TokenHeaderName = "x-my-apikey";
+        private readonly ILogger<MyCustomAuthMiddleware> _logger;
 
         public MyCustomAuthMiddleware(ILogger<MyCustomAuthMiddleware> logger)
         {
@@ -18,22 +20,18 @@ namespace CustomAuthUsingMiddleware.Middlewares
         {
             _logger.LogInformation("Executing MyCustomAuthMiddleware.");
 
-            var httpRequestData = await context.GetHttpRequestDataAsync();
+            var httpRequestData = (await context.GetHttpRequestDataAsync())!;
 
-            string? myApiKey = null;
-            if (httpRequestData!.Headers.TryGetValues("x-my-apikey", out var values))
-            {
-                myApiKey = values.First();
-            }
-
-            var isRequestValid = IsValidApiKey(myApiKey);
+            var isRequestValid = IsValidApiKey(httpRequestData);
 
             if (!isRequestValid)
             {
-                _logger.LogInformation("Invalid API key! Will return 401"); ;
+                _logger.LogInformation($"The API key present in the '{TokenHeaderName}' request header is not valid."); ;
 
-                var httpResponseData = context.GetHttpResponseData()!;
-                httpResponseData.StatusCode = HttpStatusCode.Unauthorized;
+                // Overwrite the response with our 401 response and some useful message.
+                HttpResponseData newHttpResponse = httpRequestData.CreateResponse();
+                await newHttpResponse.WriteAsJsonAsync(new { Message = $"The API key present in the '{TokenHeaderName}' request header is not valid." }, HttpStatusCode.Unauthorized);
+                context.GetInvocationResult().Value = newHttpResponse;
 
                 return;
             }
@@ -42,15 +40,18 @@ namespace CustomAuthUsingMiddleware.Middlewares
             await next(context);
         }
 
-        private static bool IsValidApiKey(string? apiKey)
+        private static bool IsValidApiKey(HttpRequestData httpRequestData)
         {
-            // Dummy implementation to validate the key. You should implement your own logic here.
-            if (string.Equals(apiKey , "foo"))
+            if (!httpRequestData.Headers.TryGetValues(TokenHeaderName, out var values))
             {
-                return true;
+                return false;
+
             }
 
-            return false;
+            var apiKey = values.First();
+
+            // Dummy implementation to validate the key. You should implement your own logic here.
+            return string.Equals(apiKey, "foo");
         }
     }
 }

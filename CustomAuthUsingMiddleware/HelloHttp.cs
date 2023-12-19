@@ -14,27 +14,15 @@ namespace Net8SimpleHttpTrigger
             _logger = loggerFactory.CreateLogger<HelloHttp>();
         }
 
-        [Function("HelloHttp")]
-        public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
-        {
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
-
-            var response = req.CreateResponse(HttpStatusCode.OK);
-            response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-            response.WriteString("Welcome to Azure Functions! HelloHttp");
-
-            return response;
-        }
-
         [Function("HelloHttpAsync")]
         public async Task<HttpResponseData> RunAsync([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
-            await Task.Delay(100); // Simulate async work
+            await Task.Delay(100); // Simulate some async work
 
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
-            await response.WriteAsJsonAsync(new { Message = "Welcome to Azure Functions! HelloHttpAsync", Time = DateTime.Now });
+            await response.WriteAsJsonAsync(new { Message = "Welcome to Azure Functions! HelloHttpAsync", Time = DateTime.Now, City = "Seattle" });
 
             return response;
         }
