@@ -14,7 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.21.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\lib\MyCompany.MyApp.BarLibrary\MyCompany.MyApp.BarLibrary.csproj" />
