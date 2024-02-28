@@ -14,7 +14,7 @@ namespace MyCompany.MyApp.Functions
             _logger = loggerFactory.CreateLogger<HelloHttp>();
         }
 
-        [Function("HelloHttp")]
+        [Function("HelloHttpFromFunctionAppAssembly")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request for HelloHttp.");

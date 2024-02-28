@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 
 namespace MyCompany.MyApp.BarLibrary
 {
-    public sealed class Bar
+
+    public sealed class BarHttpTriggers
     {
         private readonly ILogger _logger;
 
-        public Bar(ILoggerFactory loggerFactory)
+        public BarHttpTriggers(ILoggerFactory loggerFactory)
         {
-            _logger = loggerFactory.CreateLogger<Bar>();
+            _logger = loggerFactory.CreateLogger<BarHttpTriggers>();
         }
 
-        [Function("BarAsync")]
+        [Function("HttpTrigger1FromBarLibrary")]
         public async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             await Task.Delay(100); // Simulate some async work
 
-            _logger.LogInformation("C# HTTP trigger function processed a request for BarAsync");
+            _logger.LogInformation("C# HTTP trigger function processed a request for BarHttpTrigger1 from BarLibrary");
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-            response.WriteString("Welcome to BarAsync from Bar Class library");
+            response.WriteString("Hello world from Bar Class library.");
 
             return response;
         }

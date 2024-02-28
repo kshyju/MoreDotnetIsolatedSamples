@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C1C4392F-7AD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{00EBDB10-47BB-4B7C-9658-361BE5AB8C01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompany.MyApp.Functions", "src\MyCompany.MyApp.Functions\MyCompany.MyApp.Functions.csproj", "{C8EB65E8-AF88-4366-8E8C-FDAFAFBBA25E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyApp.Functions", "src\MyCompany.MyApp.Functions\MyCompany.MyApp.Functions.csproj", "{C8EB65E8-AF88-4366-8E8C-FDAFAFBBA25E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompany.MyApp.FooLibrary", "lib\MyCompany.MyApp.FooLibrary\MyCompany.MyApp.FooLibrary.csproj", "{7EFE8D74-A8DB-49BB-80E2-8B7C48F79ED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyApp.FooLibrary", "lib\MyCompany.MyApp.FooLibrary\MyCompany.MyApp.FooLibrary.csproj", "{7EFE8D74-A8DB-49BB-80E2-8B7C48F79ED6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCompany.MyApp.BarLibrary", "lib\MyCompany.MyApp.BarLibrary\MyCompany.MyApp.BarLibrary.csproj", "{3CA2F53D-970C-4CF1-8344-E751DA6331D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCompany.MyApp.BarLibrary", "lib\MyCompany.MyApp.BarLibrary\MyCompany.MyApp.BarLibrary.csproj", "{3CA2F53D-970C-4CF1-8344-E751DA6331D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
