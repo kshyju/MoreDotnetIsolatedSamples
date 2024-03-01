@@ -9,5 +9,7 @@ This sample shows a .NET isolated function application where functions are defin
 Both class libraries are referenced in the function app.
 
 #### How to run
+The function app has 1 queue trigger and 1 service bus trigger (in the FooLibrary). So update ``local.settings.json` file with your connection strings.
+
 To run the function app, set `MyCompany.MyApp.Functions` project as the startup project in Visual studio and run.
 

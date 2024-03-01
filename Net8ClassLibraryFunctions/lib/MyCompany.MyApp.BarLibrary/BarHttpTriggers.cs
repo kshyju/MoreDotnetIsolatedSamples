@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MyCompany.MyApp.BarLibrary
 {
-
     public sealed class BarHttpTriggers
     {
         private readonly ILogger _logger;

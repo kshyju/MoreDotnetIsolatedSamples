@@ -14,7 +14,7 @@ namespace MyCompany.MyApp.FooLibrary
             _logger = loggerFactory.CreateLogger<FooHttpTriggers>();
         }
 
-        [Function("HttpTrigger1FromFooLibrary")]
+        [Function("HttpTrigger1FromFooClassLibrary")]
         public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request for FooHttpTrigger1 from Foo Class library");

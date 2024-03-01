@@ -1,0 +1,9 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "MyServiceBusCon": "<<Update your service bus connection string here>>",
+    "MyQueueCon": "<<Update your queue connection string here>>"
+  }
+}
