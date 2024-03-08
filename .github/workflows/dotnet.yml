@@ -23,7 +23,7 @@ jobs:
       run: |
         cd NetFrameworkApp
         nuget restore
-        dotnet publish -c Release -o ./out/portable
+        dotnet publish NetFrameworkApp.csproj -c Release -o ./out/portable
 
     - name: Upload artifact for NetFrameworkApp
       uses: actions/upload-artifact@v2
