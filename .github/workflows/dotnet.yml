@@ -28,5 +28,5 @@ jobs:
     - name: Upload artifact for NetFrameworkApp
       uses: actions/upload-artifact@v2
       with:
-        name: published-artifacts-netframework-${{ github.run_number }}
+        name: NetFrameworkApp-published-${{ github.run_number }}
         path: ./NetFrameworkApp/out/portable
