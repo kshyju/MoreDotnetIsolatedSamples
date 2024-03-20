@@ -1,0 +1,32 @@
+name: Publish and Package
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'publish/**'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '8.*'
+        
+    - name: Build and Publish NetFrameworkApp
+      run: |
+        cd NetFrameworkApp
+        nuget restore
+        dotnet publish NetFrameworkApp.csproj -c Release -o ./out/portable
+
+    - name: Upload artifact for NetFrameworkApp
+      uses: actions/upload-artifact@v2
+      with:
+        name: NetFrameworkApp-published-${{ github.run_number }}
+        path: ./NetFrameworkApp/out/portable
