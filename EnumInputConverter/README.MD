@@ -17,6 +17,7 @@ public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "p
 
 public enum TypeEnum
 {
+    Unknown,
     TypeA,
     TypeB
 }
