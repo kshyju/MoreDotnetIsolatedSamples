@@ -1,4 +1,4 @@
-﻿namespace  MyCompany.Functions
+﻿namespace MyCompany.Functions
 {
     public sealed class FooSettings
     {

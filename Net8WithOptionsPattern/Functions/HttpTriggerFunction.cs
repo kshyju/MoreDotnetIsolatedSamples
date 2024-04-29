@@ -4,7 +4,7 @@ using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace  MyCompany.Functions
+namespace MyCompany.Functions.Functions
 {
     public sealed class HttpTriggerFunction
     {
@@ -27,7 +27,7 @@ namespace  MyCompany.Functions
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-            response.WriteString("Welcome to Azure Functions! HelloHttpAsync");
+            response.WriteString($"Welcome to Azure Functions! HelloHttpAsync. Version:{version}");
 
             return response;
         }

@@ -15,6 +15,9 @@ internal class Program
                 configBuilder
                     .SetBasePath(Directory.GetCurrentDirectory())
                     .AddJsonFile("appsettings.json", optional: true);
+
+                // Add env variables as a configuration source.
+                configBuilder.AddEnvironmentVariables();
             })
             .ConfigureServices((context, services) =>
             {
@@ -28,6 +31,13 @@ internal class Program
                 var barSettings = new BarSettings();
                 barConfigSection.Bind(barSettings);
                 services.AddSingleton(barSettings);
+
+                // AddOptions example
+                services.AddOptions<DataWarehouseServiceConfiguration>()
+                    .Configure<IConfiguration>((settings, configuration) =>
+                    {
+                        configuration.GetSection("DataWarehouseServiceConfiguration").Bind(settings);
+                    });
             })
             .Build();
 
