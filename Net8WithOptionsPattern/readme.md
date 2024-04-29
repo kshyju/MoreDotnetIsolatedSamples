@@ -23,5 +23,5 @@ You can define the app setting entry as either of the below:
 
 The `:` separator works only for windows operating system while `__` works for both windows and linux operating systems.`
 
-![Azure App settings in portal](/assets/images/azure_app_settings.png)
+![Azure App settings in portal](./assets/images/azure_app_settings.png)
 
